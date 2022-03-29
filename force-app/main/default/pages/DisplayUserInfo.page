@@ -1,0 +1,12 @@
+<apex:page >
+  <apex:pageblock >
+      <apex:pageblockSection columns="2"> 
+          <apex:pageblockSectionItem >
+              Logged in user's First Name is {!$User.FirstName}
+          </apex:pageblockSectionItem>
+          <apex:pageblockSectionItem >
+              Logged in user's Last Name is {!$User.LastName}
+          </apex:pageblockSectionItem>
+      </apex:pageblockSection>
+  </apex:pageblock>
+</apex:page>

@@ -1,0 +1,99 @@
+<apex:page controller="CustomAccountLookupController"
+  title="Search" 
+  showHeader="false" 
+  sideBar="false" 
+  tabStyle="Account" 
+  id="pg">
+  <script type="text/javascript">
+function replaceEnter(e){
+      if (e.keyCode == 13){
+        var allElements = document.getElementsByTagName('*');
+        for (var i = 0; i < allElements.length; i++){
+          if (allElements[i].id.indexOf("btnGo") !=-1){
+            allElements[i].click();
+          }
+        }
+        return false;
+      }else{
+        return true;
+      }
+    }
+    window.onkeypress = replaceEnter;
+</script>   
+  <apex:form >
+  <apex:outputPanel id="page" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+    <!--<apex:tabPanel switchType="client" selectedTab="name1" id="tabbedPanel">-->
+ 
+      <!-- SEARCH TAB -->
+      <!--<apex:tab label="Search" name="tab1" id="tabOne">-->
+ 
+        <apex:actionRegion >  
+          <apex:outputPanel id="top" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+            <apex:outputLabel value="Search" style="font-weight:Bold;padding-right:10px;" for="txtSearch"/>
+            <apex:inputText id="txtSearch" value="{!searchString}" />
+              <span style="padding-left:5px"><apex:commandButton id="btnGo" value="Go" action="{!Search}" rerender="searchResults"></apex:commandButton></span>
+          </apex:outputPanel>
+ 
+          <apex:outputPanel id="pnlSearchResults" style="margin:10px;height:350px;overflow-Y:auto;" layout="block">
+            <apex:pageBlock id="searchResults"> 
+              <apex:pageBlockTable value="{!results}" var="a" id="tblResults">
+                <apex:column >
+                  <apex:facet name="header">
+                    <apex:outputPanel >{!Fieldtosearch }</apex:outputPanel>
+                  </apex:facet>
+                   <!--<apex:outputLink value="javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a.Name}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a.Name}</apex:outputLink>     -->
+                   <!--<apex:outputLink value="javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a.Name}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a.Name }</apex:outputLink>-->
+                    <!--<apex:outputLink value="javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a[Fieldtosearch]}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a[Fieldtoshow1]}</apex:outputLink>-->
+                    <!--<apex:outputLink value="javascript:top.window.close();top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a[fieldToSearch]}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a[fieldToSearch]}</apex:outputLink>-->
+                    <!--<apex:outputLink value="javascript:top.window.close();top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a.name}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a[fieldToSearch]}</apex:outputLink>-->
+                    <apex:outputLink value="javascript:top.window.close();top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a[fieldToSearch]}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a[fieldToSearch]}</apex:outputLink>
+                   <!--<apex:outputLink value="javascript:top.window.close();top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a[fieldToSearch]}','{!a[fieldToSearch]}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a[fieldToSearch]}</apex:outputLink>-->
+                </apex:column>
+                <!--<apex:column headerValue="Id">
+                    <apex:outputLabel >{!a.Id }</apex:outputLabel>
+                </apex:column>-->
+                <apex:column headerValue="{!Fieldtoshow1}">
+                    <!--<apex:outputLabel >{!NOT(ISNULL(a.+'{!FieldsToShowTag}'))}</apex:outputLabel>-->
+                    <!--<apex:outputLabel >{!Fieldtoshow}</apex:outputLabel>-->
+                    <apex:outputLabel >{!a[Fieldtoshow1]}</apex:outputLabel>
+                </apex:column>
+                <apex:column headerValue="{!Fieldtoshow2}">
+                    <!--<apex:outputLabel >{!NOT(ISNULL(a.+'{!FieldsToShowTag}'))}</apex:outputLabel>-->
+                    <!--<apex:outputLabel >{!Fieldtoshow}</apex:outputLabel>-->
+                    <apex:outputLabel >{!a[Fieldtoshow2]}</apex:outputLabel>
+                </apex:column>
+                <apex:column headerValue="{!Fieldtoshow3}">
+                    <!--<apex:outputLabel >{!NOT(ISNULL(a.+'{!FieldsToShowTag}'))}</apex:outputLabel>-->
+                    <!--<apex:outputLabel >{!Fieldtoshow}</apex:outputLabel>-->
+                    <apex:outputLabel >{!a[Fieldtoshow3]}</apex:outputLabel>
+                </apex:column>
+              </apex:pageBlockTable>
+            </apex:pageBlock>
+          </apex:outputPanel>
+          
+        </apex:actionRegion>
+ 
+      <!--</apex:tab>-->
+ 
+      <!-- NEW ACCOUNT TAB -->
+       <!--<apex:tab label="New Account" name="tab2" id="tabTwo">
+ 
+        <apex:pageBlock id="newAccount" title="New Account" >
+ 
+          <apex:pageBlockButtons >
+            <apex:commandButton action="{!saveAccount}" value="Save"/>
+          </apex:pageBlockButtons>
+          <apex:pageMessages />
+ 
+         <apex:pageBlockSection columns="2">
+            <apex:repeat value="{!$ObjectType.Account.FieldSets.CustomAccountLookup}" var="f">
+              <apex:inputField value="{!Account[f]}"/>
+            </apex:repeat>
+          </apex:pageBlockSection> 
+        </apex:pageBlock>
+ 
+      </apex:tab>-->
+    <!--</apex:tabPanel>-->
+  </apex:outputPanel>
+  </apex:form>
+</apex:page>

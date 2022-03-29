@@ -1,0 +1,14 @@
+<apex:page controller="SE_QuestionPage" sidebar="false" showHeader="false"  id="pageid" docType="html-5.0">
+    <apex:form >
+        <apex:commandButton value="Generate Invoice" action="{!GenerateInvoice}" oncomplete="openConga('{!Payment_Id}');" reRender="pageid"/>
+        <script Language="JavaScript"> 
+            var stringvalue='{!Payment_Id}';
+            function openConga(valueFromParam) { 
+                //GenerateInvoicePay();  //comment this as you don't need it.
+                alert(valueFromParam);
+                window.location.href = "/apex/SE_MyVFPage?SolMgr=1&"+
+                "Id=" + valueFromParam + "&serverUrl={!$Api.Partner_Server_URL_370}";
+            } 
+        </script>
+    </apex:form>
+</apex:page>

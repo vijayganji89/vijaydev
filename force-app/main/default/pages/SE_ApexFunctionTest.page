@@ -1,0 +1,30 @@
+<apex:page standardController="Contact" extensions="SE_ApexFunctionTest">
+<apex:form >
+    <script>
+        function createSampleObj1(){
+            alert('1');
+            createSampleObj();
+        }
+    </script>
+    <apex:actionFunction name="createSampleObj" action="{!createSampleObjRecord}" reRender="dummy"/>
+    <apex:outputPanel id="dummy">
+        Render this again
+    </apex:outputPanel>
+    <apex:pageBlock title="Create Contact">
+        {!AccLinks}
+        <apex:pageBlockSection columns="1">
+            <apex:inputField value="{!Contact.FirstName}"/>
+            <apex:inputField value="{!Contact.LastName}"/>
+            <apex:inputField value="{!Contact.Email}"/>
+            <apex:inputField value="{!Contact.Birthdate}"/>
+            <apex:inputField value="{!Contact.AccountId}" required="true"/>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" oncomplete="createSampleObj1();" value="Save" reRender="dummy"/>
+        </apex:pageBlockButtons>
+
+    </apex:pageBlock>
+
+</apex:form>
+</apex:page>

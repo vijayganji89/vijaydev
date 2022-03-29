@@ -1,0 +1,12 @@
+<apex:page standardController="Legal_Entity__c">
+    <apex:includeScript value="/lightning/lightning.out.js" />
+
+    <script>
+        $Lightning.use("c:RelatedListApp", function() {
+            $Lightning.createComponent(
+                );
+            });
+    </script>
+    
+    <div id="theLead"></div>
+</apex:page>

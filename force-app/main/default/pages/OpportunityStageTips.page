@@ -1,0 +1,46 @@
+<apex:page docType="html-5.0" standardController="Opportunity">
+    <style>
+        .mypage .quote {
+            margin: 12px 0;
+            font-size: 64px;
+            text-align: center;
+        }
+        .mypage .delta {
+            font-size: 24px;
+            text-align: center;
+            color: green;
+        }
+    </style>
+    <apex:pageblock rendered="{!IF(Opportunity.StageName=='Prospecting',true, false)}">
+        <div class="mypage">
+            {!Opportunity.StageName}
+            Stock:
+            <div class="quote">$42.00</div>
+            <div class="delta">+1.32%</div>
+        </div>
+    </apex:pageblock>
+    <apex:pageblock rendered="{!IF(Opportunity.StageName=='Needs Analysis',true, false)}">
+        <div class="mypage">
+            {!Opportunity.StageName}
+            Stock:
+            <div class="quote">$58.00</div>
+            <div class="delta">+1.22%</div>
+        </div>
+    </apex:pageblock>
+    <apex:pageblock rendered="{!IF(Opportunity.StageName=='Proposal/Price Quote',true, false)}">
+        <div class="mypage">
+            {!Opportunity.StageName}
+            Stock:
+            <div class="quote">$142.00</div>
+            <div class="delta">+11.32%</div>
+        </div>
+    </apex:pageblock>
+    <apex:pageblock rendered="{!IF(Opportunity.StageName=='Negotiation/Review stages',true, false)}">
+        <div class="mypage">
+            {!Opportunity.StageName}
+            Stock:
+            <div class="quote">$420.00</div>
+            <div class="delta">+120.32%</div>
+        </div>
+    </apex:pageblock>
+</apex:page>

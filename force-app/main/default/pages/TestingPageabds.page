@@ -1,0 +1,186 @@
+<apex:page >
+
+<script src="http://trirand.com/blog/jqgrid/js/jquery.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/jquery-ui-custom.min.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/jquery.layout.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/ui.multiselect.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/jquery.jqGrid.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/jquery.tablednd.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/jquery.contextmenu.js" type="text/javascript"></script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+
+
+  <link rel="stylesheet" href="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/styles/jqx.base.css')}" type="text/css" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/scripts/jquery-1.7.2.min.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/scripts/gettheme.js')}" ></script>    
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxcore.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxmenu.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxdata.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxbuttons.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxtabs.js')}" ></script>    
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxscrollbar.js')}" ></script>      
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.edit.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.sort.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.filter.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.selection.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.columnsresize.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.filter.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.sort.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.pager.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxpanel.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxlistbox.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxdropdownlist.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxinput.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxexpander.js')}" ></script>  
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.export.js')}" ></script>  
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxdata.export.js')}" ></script>   
+
+<script type="text/javascript">
+  $(document).ready(function () 
+        {
+           /*
+            var theme = getDemoTheme();
+            // prepare the data
+            var data = new Array();
+            var firstNames =
+            [
+                "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Antoni", "Mayumi", "Ian", "Peter", "Lars"
+            ];
+            var lastNames =
+            [
+                "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Native", "Saavedra", "Ohno", "Devling", "Wilson", "Native"
+            ];
+            var productNames =
+            [
+                "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle"
+            ];
+            var priceValues =
+            [
+                "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0", "1.75", "3.25", "4.0"
+            ];
+            for (var i = 0; i < 15; i++) {
+                var row = {};
+                var price = parseFloat(priceValues[i]);
+                var quantity = i + Math.round(1* 10);
+                row["firstname"] = firstNames[i];
+                row["lastname"] = lastNames[i];
+                row["productname"] = productNames[i];
+                row["price"] = price;
+                row["quantity"] = quantity;
+                row["total"] = price * quantity;
+                data[i] = row;
+            }
+             var source =
+            {
+                localdata: data,
+                datatype: "array",
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ]
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+       
+            $("#jqxgrid").jqxGrid(
+            {
+                pagesize: 5,
+                width: 670,
+                source: dataAdapter,
+                theme: theme,
+                grouping:true,
+                columnsresize: true,
+                columns: [
+                  { text: 'Name', dataField: 'firstname', width: 100 },
+                  { text: 'Last Name', dataField: 'lastname', width: 100 },
+                  { text: 'Product', editable: false, dataField: 'productname', width: 180 },
+                  { text: 'Quantity', dataField: 'quantity', width: 80, cellsalign: 'right' },
+                  { text: 'Unit Price', dataField: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+                  { text: 'Total', dataField: 'total', cellsalign: 'right', minwidth: 100, cellsformat: 'c2' }
+                ]
+            });
+            */
+            var mydata = [
+                    {id:"1",invdate:"2010-05-24",name:"test",note:"note",tax:"10.00",total:"2111.00"} ,
+                    {id:"2",invdate:"2010-05-25",name:"test2",note:"note2",tax:"20.00",total:"320.00"},
+                    {id:"3",invdate:"2007-09-01",name:"test3",note:"note3",tax:"30.00",total:"430.00"},
+                    {id:"4",invdate:"2007-10-04",name:"test",note:"note",tax:"10.00",total:"210.00"},
+                    {id:"5",invdate:"2007-10-05",name:"test2",note:"note2",tax:"20.00",total:"320.00"},
+                    {id:"6",invdate:"2007-09-06",name:"test3",note:"note3",tax:"30.00",total:"430.00"},
+                    {id:"7",invdate:"2007-10-04",name:"test",note:"note",tax:"10.00",total:"210.00"},
+                    {id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"21.00",total:"320.00"},
+                    {id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+                    {id:"11",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+                    {id:"12",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+                    {id:"13",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+                    {id:"14",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+                    {id:"15",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+                    {id:"16",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+                    {id:"17",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+                    {id:"18",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+                    {id:"19",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+                    {id:"21",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+                    {id:"22",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+                    {id:"23",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+                    {id:"24",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+                    {id:"25",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+                    {id:"26",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+                    {id:"27",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+                    {id:"28",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+                    {id:"29",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
+                ];
+            jQuery("#list48").jqGrid({
+                data: mydata,
+                datatype: "local",
+                height: 'auto',
+                rowNum: 30,
+                rowList: [10,20,30],
+                colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
+                colModel:[
+                    {name:'id',index:'id', width:60, sorttype:"int"},
+                    {name:'invdate',index:'invdate', width:90, sorttype:"date", formatter:"date"},
+                    {name:'name',index:'name', width:100, editable:true},
+                    {name:'amount',index:'amount', width:80, align:"right",sorttype:"float", formatter:"number", editable:true},
+                    {name:'tax',index:'tax', width:80, align:"right",sorttype:"float", editable:true},      
+                    {name:'total',index:'total', width:80,align:"right",sorttype:"float"},      
+                    {name:'note',index:'note', width:150, sortable:false}       
+                ],
+                pager: "#plist48",
+                viewrecords: true,
+                sortname: 'name',
+                grouping:true,
+                groupingView : {
+                    groupField : ['name']
+                },
+                caption: "Grouping Array Data"
+            });
+            
+           
+     });
+    
+    function test()
+    {
+       var data = $("#jqxgrid").jqxGrid('exportdata', 'html') ;
+       //$(data).find('body').append('<b>hi</b>'); 
+       data =data.replace("<body>","<body>" + $("#appenddat").html());
+       console.log(data);
+    }
+        
+</script>
+<!--
+<div id="jqxgrid"></div>
+<input onClick="test()" type="button"></input>
+<div id="appenddat" style="display:none"> <h1> termi</h1></div>
+-->
+<table id="list47"></table>
+<div id="plist47"></div>
+</apex:page>

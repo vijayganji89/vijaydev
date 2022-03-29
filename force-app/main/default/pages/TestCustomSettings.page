@@ -1,0 +1,8 @@
+<apex:page controller="TestCustomSeetings">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: TestCustomSettings
+  <!-- End Default Content REMOVE THIS -->
+  <br/>
+  {!CustomSetting.Country_name__c}
+</apex:page>

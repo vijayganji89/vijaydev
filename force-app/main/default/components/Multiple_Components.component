@@ -1,0 +1,23 @@
+<apex:component >
+    <apex:attribute name="id" description="The unique id" type="String" required="true"/>
+    <apex:attribute name="customColor" description="" type="String" required="false"/>
+
+    <style>
+        .myStyle{!id} { color:{!customColor}; }
+    </style>
+
+    <script>
+        function getAlerter{!id}(btn)
+        {    
+            //var sad="'"+{!id}+"'";
+            //alert('Coming from'+ sad);
+            alert(btn);
+        }
+        
+         window.onload = function() {
+          alert('1');
+        };
+    </script>
+    <apex:outputText styleClass="myStyle{!id}" value="Please click here" />
+    <input type='button' id="test{!id}" value="Click Me" onclick="getAlerter{!id}(this.id);"/>
+</apex:component>

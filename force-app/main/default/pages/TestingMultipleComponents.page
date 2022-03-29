@@ -1,0 +1,4 @@
+<apex:page >
+    Text 1: <c:Multiple_Components id="First" customColor="red" /> <br/>
+    Text 2: <c:Multiple_Components id="Second" customColor="green" />
+</apex:page>

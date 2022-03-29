@@ -1,0 +1,52 @@
+<apex:page controller="SE_SLDSInputFileLightningCtrl">
+    <apex:form id="theForm">
+    <script>
+        function handleFile(file) {
+            /*console.log(file);
+            var reader  = new FileReader();
+            reader.file = f;
+            var fileobj = f;
+            document.getElementById("fileName").innerHTML = fileobj.name;*/
+            console.log(file);
+            console.log(file.id);
+            //console.log(fullPath);
+            var fullPath = document.getElementById(file.id).value;
+            
+            var split = fullPath.split(/(\\|\/)/g).pop();
+            document.getElementById("fileName").innerHTML = split;
+        }
+        
+        /*function handleFile() {
+            var fullPath = document.getElementById('fileUploadInput01').value;
+            var split = fullPath.split(/(\\|\/)/g).pop();
+            document.getElementById("fileName").innerHTML = split;
+        }*/
+        
+    </script>
+   <apex:slds />
+   <apex:pageBlock >
+      <apex:pageBlockSection >
+         <div class="slds-form-element">
+            <span class="slds-form-element__label" id="file-selector-id">Attachment</span>
+            <div class="slds-form-element__control">
+               <div class="slds-file-selector slds-file-selector_files">
+                  <div class="slds-file-selector__dropzone">
+                     <apex:inputFile styleClass="slds-file-selector__input slds-assistive-text" accept="image/png" id="fileUploadInput01" value="{!attach.Body}" filename="{!attach.name}" onchange="handleFile(this)"/>
+                     <apex:outputLabel styleClass="slds-file-selector__body" for="fileUploadInput01">
+                        <span class="slds-file-selector__button slds-button slds-button_neutral">
+                           <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"></use>
+                           </svg>
+                           Upload Files
+                        </span>
+                        <span id="fileName" class="slds-file-selector__text slds-medium-show">or Drop files</span>
+                     </apex:outputLabel>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <apex:commandButton value="Save" action="{!save}"/>
+      </apex:pageBlockSection>
+   </apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,74 @@
+<apex:page controller="MyCustomLookupController" id="Page" tabstyle="Contact">
+    <script src="../../soap/ajax/42.0/connection.js" type="text/javascript"></script>
+    <script src="../../soap/ajax/42.0/apex.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function openLookup(baseURL, width, modified, searchParam) {
+            var originalbaseURL = baseURL;
+            var originalwidth = width;
+            var originalmodified = modified;
+            var originalsearchParam = searchParam;
+            console.log(baseURL);
+            var lookupType = baseURL.substr(baseURL.length - 3, 3);
+            
+            var query = "SELECT Name,Field_To_Search_On__c,Field_To_Show1__c,Field_To_Show2__c,Field_To_Show3__c,Object_API_Name__c from Custom_Lookup_Setup__c WHERE Name='" + lookupType +"'"; 
+            sforce.connection.sessionId='{!GETSESSIONID()}';
+            var records = sforce.connection.query(query); 
+            var records1 = records.getArray('records'); 
+            var objectToSearchOn = records1[0].Object_API_Name__c;  
+            var fieldToSearchOn = records1[0].Field_To_Search_On__c;  
+            var fieldToShow1 = records1[0].Field_To_Show1__c;  
+            var fieldToShow2 = records1[0].Field_To_Show2__c;  
+            var fieldToShow3 = records1[0].Field_To_Show3__c;  
+            
+            if (modified == '1') baseURL = baseURL + searchParam;
+
+            var isCustomLookup = false;
+            
+            // Following "001" is the lookup type for Account object so change this as per your standard or custom object a00
+            if (records1.length > 0) {
+                var urlArr = baseURL.split("&");
+                console.log(urlArr);
+                var txtId = '';
+                if (urlArr.length > 2) {
+                    urlArr = urlArr[1].split('=');
+                    console.log(urlArr);
+                    txtId = urlArr[1];
+                    console.log(txtId);
+                }
+
+                // Following is the url of Custom Lookup page. You need to change that accordingly
+                //baseURL = "/apex/CustomLookUp?obj=Department__c&fld=Department_Name__c&fldshow1=Organization_ID__c&fldshow2=Organization_MainID__c&fldshow3=Organization_Name__c&txt=" + txtId;
+                baseURL = "/apex/CustomLookUp?obj="+ objectToSearchOn +"&fld="+fieldToSearchOn +"&fldshow1="+fieldToShow1 +"&fldshow2="+fieldToShow2 +"&fldshow3="+fieldToShow3 +"&txt=" + txtId;
+
+                // Following is the id of apex:form control "myForm". You need to change that accordingly
+                baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.myForm}");
+                if (modified == '1') {
+                    baseURL = baseURL + "&lksearch=" + searchParam;
+                }
+
+
+                // Following is the ID of inputField that is the lookup to be customized as custom lookup
+                if (txtId.indexOf('Account') > -1) {
+                    isCustomLookup = true;
+                }
+            }
+
+            if (isCustomLookup == true) {
+                openPopup(baseURL, "lookup", 350, 480, "width=" + width + ",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+            } else {
+                if (modified == '1') originalbaseURL = originalbaseURL + originalsearchParam;
+                openPopup(originalbaseURL, "lookup", 350, 480, "width=" + originalwidth + ",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+            }
+        }
+    </script>
+
+    <apex:sectionHeader title="Demo" subtitle="Custom Lookup" />
+
+    <apex:form id="myForm">
+        <apex:PageBlock id="PageBlock">
+            <apex:pageBlockSection columns="1" title="Custom Lookup">
+                <apex:inputField id="Account" value="{!contact.AccountId}" />
+            </apex:pageBlockSection>
+        </apex:PageBlock>
+    </apex:form>
+</apex:page>

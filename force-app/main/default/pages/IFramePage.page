@@ -1,0 +1,64 @@
+<apex:page sidebar="false" id="page">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: IFramePage
+  <!-- End Default Content REMOVE THIS -->
+  <script type="text/javascript">
+//document.onload=hello();
+window.onload =function ()
+{
+alert(window.opener.location.href);
+    var first = getUrlVars()["TestValue"];
+  //alert(first); 
+    document.getElementById('page:Myform:pgblock:pbs:test').value = first ;
+    document.getElementById('page:Myform:pgblock:pbs:test').readOnly = 'true';
+}
+
+function hello() {
+//alert('Hi');
+  //var dt=Date();
+  //var msg="Hello world, today is "+dt;
+  //alert(msg);
+  //alert( document.URL );
+  //var caseId= '{!$CurrentPage.parameters.CaseId}';
+  //alert( document.URL );
+  //var first = getUrlVars()["TestValue"];
+  //alert(first);  
+  document.getElementById('page:Myform:pgblock:pbs:test').value = '123';
+  //document.getElementbyId('page:Myform:pgblock:pbs:test').value='13';
+  //alert()
+  
+}
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+    }
+
+function setForm(name)
+{
+//alert(name);
+//alert(window.opener.location.href);
+//console.log(window.opener);
+<!--window.parent.opener.document.getElementById('oval').value = document.getElementById('oval').value;-->
+window.opener.document.getElementById('opage:oform:oval').value = name;
+self.close();
+return false;
+}
+</script>
+<apex:form id="Myform" >
+<apex:commandLink value="test" id="oval" onclick=" return setForm('test');"><br/>
+              
+            </apex:commandlink>
+<!--<apex:repeat value="{!depts}" var="a" id="rpt">    
+            
+           </apex:repeat>-->   
+<apex:pageBlock id="pgblock">
+<apex:pageBlockSection id="pbs">
+<apex:inputText id="test"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,17 @@
+.THIS .floatR{
+    float:right;
+}
+.THIS .tableBorder{
+    border: 1px solid black;
+}
+.THIS .arrow .slds-icon {
+    fill:#0C8EFF !important;
+    height: 1rem !important;
+    line-height: 1 !important;
+    width: 1rem !important;
+}
+.THIS .dropIcon{
+    float: right;
+    margin-right: -30px;
+    padding-top: 4px;
+}

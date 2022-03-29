@@ -1,0 +1,19 @@
+<apex:page standardController="Contact">
+  <apex:form >
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+      <script>
+          $( window ).load(function() {
+              $("#calYearPicker").html('')
+              for(var i = 1970; i <= 2018; i++){
+                  $("#calYearPicker").append("<option value='" + i +"'>" + i+ "</option>");
+              }
+          });
+      </script>
+      <apex:pageBlock mode="edit">
+          <apex:pageBlockSection >
+              <apex:inputField label="Birthdate"  value="{!Contact.Birthdate}"/>
+              <apex:inputField value="{!Contact.Description}"/>
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

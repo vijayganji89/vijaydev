@@ -1,0 +1,30 @@
+<apex:page controller="MultiSheetExcelGenerate" sidebar="false" showHeader="false" contentType="application/vnd.ms-excel#myfile.xls">
+<!--  <html>
+<body>-->
+{!xmlheader}
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <ActiveSheet>2</ActiveSheet>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet11">
+ 
+ </Worksheet>
+ <Worksheet ss:Name="Sheet12">
+ </Worksheet>
+
+</Workbook>
+</apex:page>

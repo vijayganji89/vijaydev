@@ -1,0 +1,13 @@
+<apex:page controller="InvokeWebService">
+    <apex:form >
+        <apex:commandButton value="Invoke Webservice" action="{!getCountries}" rerender="pg,country"/>
+        <apex:outputLabel id="country">{!allcountries}</apex:outputLabel>
+        <apex:pageBlock >
+            
+            <apex:pageblockTable value="{!allcountries}" id="pg" var="c">
+                
+            </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

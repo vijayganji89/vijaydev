@@ -1,0 +1,50 @@
+<apex:page controller="AccountEmailAlert" showHeader="false" sidebar="false">
+    <script type="text/javascript">
+    function selectAllCheckboxes(obj,receivedInputID){
+        var inputCheckBox = document.getElementsByTagName("input");
+        for(var i=0; i<inputCheckBox.length; i++){
+            if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                inputCheckBox[i].checked = obj.checked;
+            }
+        }
+    }
+    </script>
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageMessages id="msg"></apex:pageMessages>
+            <apex:pageBlockSection title="Account Search box">
+                <apex:outputLabel value="Name"></apex:outputLabel>
+                <apex:inputText value="{!searchKey}" />
+                <apex:outputPanel style="float:centre">
+                    <apex:commandButton value="Search records" action="{!search}" />
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageblock>
+        <apex:pageBlock title="Search Result">          
+            <apex:pageBlockTable id="pg1" value="{!wrapAccountList}" var="a">
+                <apex:column >
+                    <apex:facet name="header">
+                        <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!a.selected}" id="inputId"/>
+                </apex:column>
+                <apex:column value="{!a.acc1.name}"/>
+                <apex:column value="{!a.acc1.rating}"/>
+                <apex:column value="{!a.acc1.type}"/>
+                <apex:column value="{!a.acc1.id}"/>
+            </apex:pageBlockTable>
+            <div align="center">
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="send" action="{!sendEmail}"/>
+                </apex:pageBlockButtons>                
+            </div>
+            <div align="right">
+                <apex:commandButton value="First Page" action="{!Firstbtn}" disabled="{!prv}" reRender="pg1"/>
+                <apex:commandButton value="PreviousPage" action="{!prvbtn}" disabled="{!prv}" reRender="pg1"/>
+                <apex:commandButton value="NextPage" action="{!Nxtbtn}" disabled="{!nxt}" reRender="pg1"/>
+                <apex:commandButton value="LastPage" action="{!lastbtn}" disabled="{!nxt}" reRender="pg1"/>
+            </div>
+            <apex:outputLabel >Total no of recs:{!tot}</apex:outputLabel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

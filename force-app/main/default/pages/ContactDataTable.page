@@ -1,0 +1,33 @@
+<apex:page controller="ContactDatatableCtrl" sidebar="false">
+    <apex:stylesheet value="{!URLFOR($Resource.dataTable, 'DataTables-1.10.18/css/jquery.dataTables.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryJS, 'jQuery/js/jquery-3.2.1.min.js')}"  />
+    <apex:includeScript value="{!URLFOR($Resource.dataTable, 'DataTables-1.10.18/js/jquery.dataTables.min.js')}"  />
+    <script>
+        var $ = jQuery.noConflict();
+        $(document).ready( function (){
+            allDtables = $('table.datatable').DataTable( {
+                "pagingType": "full_numbers",
+                "searching": true,
+                "ordering": true,
+                "lengthChange": true,
+                "autoWidth": true,
+                "lengthMenu": [ 5, 10, 25, 50, 75, 100 ]
+            } );
+        } );
+    </script>
+    <apex:form >
+        <apex:pageblock title="List of Contacts">
+            <apex:pageblockTable value="{!contactList}" var="con" styleClass="datatable">
+                <apex:column value="{!con.Name}"/>
+                <apex:column value="{!con.Account.Name}" headerValue="Account"/>
+                <apex:column value="{!con.Department}"/>
+                <apex:column value="{!con.Title}"/>
+                <apex:column value="{!con.Email}"/>
+                <apex:column value="{!con.Phone}"/>
+                <apex:column value="{!con.MailingCity}"/>
+                <apex:column value="{!con.MailingState}"/>
+                <apex:column value="{!con.MailingCountry}"/>
+            </apex:pageblockTable>
+        </apex:pageblock>
+    </apex:form> 
+</apex:page>

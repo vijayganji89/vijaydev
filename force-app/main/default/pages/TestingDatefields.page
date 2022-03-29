@@ -1,0 +1,85 @@
+<apex:page standardController="Opportunity" sidebar="false" showheader="false">
+<!--
+How to use date picker extend
+lowerLimit    : Number by which you need to make year start. Accept 100 max
+higherLimit   : Number by which you need to make year end. Accept 100 max
+startYear     : Year by which you need to make start year.If given lowerLimit/higherLimit ignored. Must be less than endYear. Difference between startYear/endYear must not exceed 300.
+endYear       : Year by which you need to make end year.If given lowerLimit/higherLimit ignored. Must be greater than startYear. Difference between startYear/endYear must not exceed 300.
+-->
+<!--<c:DatePickerExtend lowerLimit="10" higherLimit="15"/>-->
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(function(){
+        
+        var PRELIMIT = parseInt(10);
+        var POSTLIMIT = parseInt(15);
+        var startYear = parseInt(0);
+        var endYear =  parseInt(0);
+        
+        if(!startYear && PRELIMIT){
+            startYear = $("#calYearPicker option:first").val();            
+            endYear = $("#calYearPicker option:last").val();
+            if(PRELIMIT <= 100){
+                for(var i = 1; i <= PRELIMIT; i++){
+                     $("#calYearPicker").prepend("<option value='" + --startYear +"'>" + startYear + "</option>");
+                }
+            }
+            if(POSTLIMIT <= 100){
+                for(var i = 1; i <= POSTLIMIT; i++){
+                     $("#calYearPicker").append("<option value='" + ++endYear +"'>" + endYear + "</option>");
+                }
+            }
+        }else{
+            if(!endYear){
+                startYear = $("#calYearPicker option:last").val();
+            }
+            if(endYear - startYear <= 300){
+                $("#calYearPicker option").remove();
+                for(var i = startYear; i <= endYear;){
+                    $("#calYearPicker").append("<option value='" + i +"'>" + i++ + "</option>");
+                }
+            }
+        }
+    });
+</script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<!--We need something with a known id so we can navigate up in the dom to hide the sidebar component.-->
+<!--Anything with an id will do. I used a span tag-->
+<span id="hideMyParent"></span>
+<!--this is where the magic happens-->
+<script type="text/javascript">
+    //You need to wrap everything in document.ready because the select tag we are taregting needs to
+    //be loaded in the DOM befire we can access it.
+    $(document).ready(function() {
+        //-----EDIT THE NEXT TWO LINES-----
+        var startYear=1982; //replace 1982 with whatever year you want to start with;
+        var endYear=2034; //replace 2034 with whatever year you want to end with;
+        //-----EDIT BELLOW HERE AT YOUR OWN RISK-----
+        var optionsString='';
+        //Make sure that the endYear comes after the startYear
+        if(startYear<endYear){
+            //Loops through each date and renders the string for an option tag and addes it to the Optrionsstring variable
+            for(i=startYear;i<endYear+1;i++){
+                optionsString += "<option value=\""+i+"\">"+i+"</option>";
+            }
+            //Replace the innerHTML of the calendar picker year select tag with the Optionsstring we constructed.
+            $('#calYearPicker').html(optionsString);
+        }
+        //Hide the home page componet;
+        $('#sidebarDiv #hideMyParent').parent().parent().hide();
+    });
+</script>
+
+
+<!--  GENERAL CODE -->
+<apex:sectionHeader subtitle="Extended DatePicker" title="Vijay Ganji"/>
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection >
+<apex:inputField value="{!Opportunity.Name}"/>
+<apex:inputField value="{!Opportunity.CloseDate}" id="closedate"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

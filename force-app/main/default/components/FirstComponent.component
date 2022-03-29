@@ -1,0 +1,71 @@
+<apex:component controller="EmployeeExtraComponent" allowDML="true">
+<script>
+function openLookup(baseURL, width, modified, searchParam){
+    var originalbaseURL = baseURL;
+    var originalwidth = width;
+    var originalmodified = modified;
+    var originalsearchParam = searchParam;
+ 
+    var lookupType = baseURL.substr(baseURL.length-3, 3);
+    if (modified == '1') baseURL = baseURL + searchParam;
+ 
+    var isCustomLookup = false;
+ 
+    // Following "001" is the lookup type for Account object so change this as per your standard or custom object a00
+    if(lookupType == "a02"){
+    //if(lookupType == "a00"){
+ 
+      var urlArr = baseURL.split("&");
+      var txtId = '';
+      if(urlArr.length > 2) {
+        urlArr = urlArr[1].split('=');
+        txtId = urlArr[1];
+      }
+ 
+      // Following is the url of Custom Lookup page. You need to change that accordingly
+      baseURL = "/apex/CustomLookUp?obj=Department__c&fld=Department_Name__c&fldshow1=Organization_ID__c&fldshow2=Organization_MainID__c&fldshow3=Organization_Name__c&txt=" + txtId;
+ 
+      // Following is the id of apex:form control "myForm". You need to change that accordingly
+      baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.myForm}");
+      if (modified == '1') {
+        baseURL = baseURL + "&lksearch=" + searchParam;
+      }
+           
+     
+      // Following is the ID of inputField that is the lookup to be customized as custom lookup
+      if(txtId.indexOf('Account') > -1 ){
+        isCustomLookup = true;
+      }
+    }
+      
+    if(isCustomLookup == true){
+      openPopup(baseURL, "lookup", 350, 480, "width="+width+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+    }
+    else {
+      if (modified == '1') originalbaseURL = originalbaseURL + originalsearchParam;
+      openPopup(originalbaseURL, "lookup", 350, 480, "width="+originalwidth+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+    } 
+  }
+ 
+
+
+</script>
+  <apex:attribute name="id" description="The unique id" type="String" required="true"/>
+    <apex:attribute name="customColor" description="" type="String" required="false"/>
+
+    <!--<style>
+        .myStyle{!id} { color:{!customColor}; }
+    </style>
+
+    <apex:outputText styleClass="myStyle{!id}" value="Please click here" />-->
+    <apex:form >
+    <apex:pageblock >
+    <apex:pageBlockSection title="Employee Information">
+    <apex:inputField value="{!EMPL.Employee_Name__c}" label="Employee Name"/>
+       <apex:inputField value="{!EMPL.Organization_ID__c}" label="Organization"/>
+        <apex:inputField value="{!EMPL.Department_Record_ID__c}" id="Account" label="Department ID"/> 
+        <apex:commandButton action="{!SaveEmployee}" value="Save" reRender="Account"/> 
+     </apex:pageBlockSection>
+     </apex:pageblock>
+     </apex:form>
+</apex:component>

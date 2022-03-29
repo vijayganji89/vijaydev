@@ -1,0 +1,34 @@
+<apex:page controller="SE_SpinnerCtrl" showheader="false" sidebar="false">
+    <div style="positive:relative !important">
+  <apex:form >
+      
+      <apex:slds />
+      <!--<div class="slds-spinner_container" style="position:fixed">
+             <div id="mySpinner" role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+            <span class="slds-assistive-text">Loading..</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+          </div>
+        </div>-->
+      
+      <apex:actionstatus id="sts" >
+         <apex:facet name="start" >
+          <div class="slds-spinner_container" style="position:fixed;">
+             <div id="mySpinner" role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+            <span class="slds-assistive-text">Loading..</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+          </div>
+        </div>
+      </apex:facet>
+     </apex:actionstatus>
+     <apex:commandButton value="Show Spinner" rerender="pageBlock" status="sts" action="{!saveSpinner}"/>
+     <apex:pageblock id="pageBlock">
+         <apex:pageblockTable value="{!accountsToDisplay}" var="acc">
+             <apex:column value="{!acc.Name}"/>
+         </apex:pageblockTable>
+     </apex:pageblock>
+     
+  </apex:form>
+  </div>
+</apex:page>

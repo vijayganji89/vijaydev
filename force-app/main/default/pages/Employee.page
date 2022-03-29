@@ -1,0 +1,119 @@
+<apex:page standardController="Employee__c" extensions="EmpExtensions" id="page" sidebar="false">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+
+  <script type="text/javascript">
+//document.onload=hello();
+//window.onload=alert("/{!$CurrentPage.parameters.id}");
+
+//window.onunload = refreshParent;
+//    function refreshParent() {
+//        window.opener.location.reload();
+//    }
+
+function hello() {
+  //var dt=Date();
+  //var msg="Hello world, today is "+dt;
+  //alert(msg);
+  //alert( document.URL );
+  //var first = getUrlVars()["id"];
+  var first = getUrlVars()["TestValue"];
+  alert(first);
+}
+
+function proceed(){
+   //opener.location.reload(true);
+   opener.location.reload();
+   self.close();
+   
+}
+
+
+
+function pop()
+    {    
+    var msgwindow=null;   
+    //var url="/apex/new1?val=";
+    var url="/apex/IFramePage?TestValue=123";
+    //var url="/apex/Employee?TestValue=123";
+    //var value = document.getElementById('{!$Component.opage.oform.oval}').value;
+    //alert(url);
+    //msgWindow = open(url+value,window,'resizable=no,width=200,height=400');   
+    msgWindow = open(url,window,'resizable=no,width=400,height=400');   
+    return false;
+    }
+    
+    function refreshParent() {
+  window.opener.location.href = window.opener.location.href;
+
+  if (window.opener.progressWindow)
+        
+ {
+    window.opener.progressWindow.close()
+  }
+  window.close();
+}
+function CloseAndRefresh1(){
+window.opener.location.href="/{!$CurrentPage.parameters.id}";
+      window.top.close();
+    
+  }
+  function CloseAndRefresh2(){
+  self.close();
+window.opener.location.href="/{!$CurrentPage.parameters.id}";
+  }
+</script>
+
+<script language="JavaScript" type="text/javascript">
+function CloseAndRefresh(){
+window.opener.location.href="/{!$CurrentPage.parameters.id}";
+      window.top.close();
+    
+  }
+ 
+  
+</script>
+ <script>
+          function getValue()
+            {
+                alert('HI');
+                //console.log(jQuery('[id$=test]'));
+                //alert(jQuery("#test").val());
+                //alert($("#test").val()); 
+                alert("{!$Component.test}");
+                alert(jQuery('[id$=test]').val());
+                //alert(jQuery('[id$=test]'));
+            }
+          </script> 
+ 
+
+  <apex:form id="myForm">
+  <apex:inputtext id="oval"/>
+        <apex:commandbutton value="pop" onClick="pop()" />
+  <apex:pageBlock id="pb">
+      <apex:pageBlockSection id="pbs">
+       
+          <apex:inputField value="{!Employee__c.Employee_Name__c}"/>
+          
+          <apex:inputText value="{!Employee__c.Employee_Name__c}" id="test"/>
+          <apex:inputField value="{!Employee__c.Department_Record_ID__c}" id="Account"/>
+          <apex:inputField value="{!Employee__c.Organization_ID__c}" id="Account1"/>
+          <!--<apex:inputField value="{!Employee__c.Start_Date__c}"/>-->
+          <apex:selectList id="countries" value="{!Employee__c.Start_Date__c}" size="1" required="true">
+          <apex:selectOptions value="{!countries}"/>
+            </apex:selectList>
+          <!--<apex:commandButton action="{!save}" value="save1" onclick="javascript:top.window.close();window.opener.location.href = window.opener.location.href;"/>-->
+          <!--<apex:commandButton action="{!save}" value="save" onclick="javascript:CloseAndRefresh()" />-->
+          <!--<apex:commandButton action="{!save}" value="save" oncomplete="javascript:proceed()" />-->
+          <!--<apex:commandButton action="{!save}" value="save" onclick="javascript:window.opener.document.location.reload(true);"/>-->
+          <!--<apex:commandButton action="{!save}" value="save" onclick="javascript:top.window.close();window.opener.location.href ='/apex/Organization/?id=a0090000009jsZR'"/>-->
+            <apex:commandButton action="{!save}" value="save" oncomplete="refreshParent();"/>
+            <apex:commandButton onclick="getValue();"/>          
+          
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+ <!-- <apex:iframe id="xyz" src="/apex/IFramePage?TestValue=123" rendered="true"></apex:iframe>-->
+  </apex:form>
+</apex:page>

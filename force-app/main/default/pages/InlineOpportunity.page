@@ -1,0 +1,16 @@
+<apex:page standardController="Opportunity" extensions="OpportunityExtn">
+    <apex:form >
+        <apex:pageblock >
+            <center>
+                <apex:commandButton value="Save" action="{!savebutton}"/>
+                <apex:commandLink value="Save Link" action="{!savebutton}" target="_top"/>
+                <apex:commandLink value="Save" action="{!savebutton}" target="_parent" styleClass="btn" style="text-decoration:none;padding:4px;"/>
+                <apex:commandButton action="{!savebutton}" value="Submit" oncomplete="top.location.reload(true);"/>
+            </center>
+            <apex:pageblockSection >
+                <apex:inputField value="{!opportunity.DB_Competitor__c}"/>
+                <apex:inputField value="{!opportunity.DeliveryInstallationStatus__c}"/>
+            </apex:pageblockSection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

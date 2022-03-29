@@ -1,0 +1,11 @@
+<aura:component >
+	<ui:inputText label="First Name" aura:id="fname"/>
+	<ui:inputText label="Last Name" aura:id="lname"/>
+    <ui:inputSelect label="Salutation"> 
+        <ui:inputSelectOption text="Red"/>
+        <ui:inputSelectOption text="Green" value="true"/>
+        <ui:inputSelectOption text="Blue"/>
+    </ui:inputSelect>
+    <ui:inputPhone label="Phone Number" aura:id="name"/>
+    <ui:button aura:id="outputButton" label="Submit"/>
+</aura:component>

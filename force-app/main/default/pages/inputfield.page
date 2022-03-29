@@ -1,0 +1,14 @@
+<apex:page standardController="Organization__c"  extensions="inputfieldController">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: inputfield
+  <!-- End Default Content REMOVE THIS -->
+  <apex:form >
+      <apex:inputField value="{!Organization__c.Organization_Type__c}" label="Organization Type">
+      <apex:actionSupport event="onchange" reRender="otherFieldRequired" action="{!ValueofDDL}" immediate="true"/>
+      </apex:inputField>
+      <apex:outputPanel id="otherFieldRequired">
+         TEST
+      </apex:outputPanel>
+  </apex:form>
+</apex:page>

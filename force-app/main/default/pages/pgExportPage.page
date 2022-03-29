@@ -1,0 +1,59 @@
+<apex:page readOnly="false" showHeader="false" standardstylesheets="false"  controller="PRSL_prrecn_cntrlr" contentType="application/vnd.ms-excel#export.xls" title="Export To Excel" cache="true">
+<head>
+<style>
+    .topborder{font-family: Courier New; font-size:8pt; color:black; background-color: white; text-align:left ; border-top:thin groove; border-color:black;}
+    .bottomborder{font-family: Courier New; font-size:8pt; color:black; background-color: white; text-align:left ; border-bottom:thin groove; border-color:black;}
+    .pagebreak {page-break-after: always;}
+    .tableReportHeader{border-top: groove DarkBlue 1px; border-left: groove DarkBlue 1px; border-right: groove DarkBlue 1px; width: 100%;}
+    .tabledetails{border-left: groove DarkBlue 0px; border-right: groove DarkBlue 0px;  width: 100%; font-size:7pt; margin-top: 0px; }
+    .tableReportFooter{bottom: 1px;border-bottom: groove DarkBlue 0px; border-left: groove DarkBlue 0px; border-right: groove DarkBlue 0px; font-size:7pt; width: 100%;}
+    .imglogo{border-style: none; vertical-align: top; border-color: White; font-size:9pt;}
+    
+    .tdnew{font-family:Courier New; font-size: 8pt; color:black; background-color: white; text-align:left; border: groove 0px black; }
+    .tdhead{font-family:Tahoma; font-size:10pt; color:black; font-weight: bold; background-color: white; text-align:left ; border: groove 0px black; }
+    .tdmargin{width:10px;}
+    .gridrowTerminated{font-family:Tahoma; font-size:7pt; color:black; background-color: red;  border: groove 1px gray; }
+    .documentheader{font-family:Tahoma; font-size:9pt; color:DarkBlue; font-weight:bold;}
+    th{font-family:Tahoma; font-size:8pt; color:black; background-color: #d1eef8 !important; text-align:right ; border: groove 1px gray; }
+    .gridrow{font-family:Tahoma; font-size:7pt; color:black; background-color: white;  border: groove 1px gray; }
+    .gridrowText{font-family:Tahoma; font-size:7pt; color:red; background-color: white;  border: groove 1px gray; }
+    .gridrowspecial{font-family:Tahoma; font-size:7pt; color:black; background-color: green;  border: groove 1px gray; }
+    .gridrow1{font-family:Tahoma; font-weight:bold; font-size:7pt; color:black; background-color: #d1eef8 !important; border: groove 1px gray; mso-number-format:"\@";}
+    .gridrowCheckVoided{font-family:Tahoma; font-weight:bold; font-size:7.5pt; color:black; background-color: red;  border: groove 1px gray; }
+    .tdorderHeader{border: groove 1px gray;}
+    .blueline{border-bottom: groove DarkBlue 1px;}
+    .documenttotal{font-family:Tahoma; font-size:7pt; color:black; font-weight:bold;border-bottom: groove gray 1px;}
+    .tdtotalmargin{width:150px;}
+    
+    .lbl {font-family: "Tahoma" !important;font-size: 10.5px !important;font-weight: bold !important;}
+    .jqx-widget-header {background-color: white !important;}
+    .jqx-grid-column-header {font-family: "Tahoma" !important;}
+    .jqx-grid-column-header {font-size: 9px !important;}
+    .jqx-grid-column-header {font-weight: bold !important;}
+    .jqx-grid-column-header {background-color: #d1eef8 !important;}
+    .jqx-grid-cell {font-family: "Tahoma";border-width: 1px 0px 0px 1px !important}
+    .jqx-grid-cell {border-color: #d4dadc #d4dadc #d4dadc #d4dadc !important}
+    .jqx-grid {border: #d4dadc 1px groove !important;}
+    .jqx-item {background-color: #d7ecf3 !important;}
+    .jqx-tabs-title-selected-top {background-color: #2aabab !important;}
+    .jqx-tabs-title-selected-top {color: #d7ecf3 !important;}
+    .jqx-tabs-header {border-bottom: 0px !important;}
+    .jqx-grid-header {background-color: #d0eef8;height: 24px;font-family: "Arial";font-weight: bold !important;}
+    .jqx-grid-groups-header {background-color: #d0eef8 !important}
+    .jqx-widget-header {font-weight: bold;font-size: 13px;font-family: "Arial";}
+    .jqx-grid-cell-hover {background-color: #e3f3ff !important;}
+    .jqx-grid-cell-selected {background-color: #b0e1fa !important;}
+    .jqx-grid-pager {background-color: #d0eef8;height: 24px;font-family: "Arial";font-weight: bold !important;}
+    .jqx-dropdownlist-state-selected {background-color: white !important;}
+    .jqx-listbox {background-color: white !important;}
+    .jqx-listitem-state-group {background-color: white !important;}
+    .jqx-listitem-state-normal {background-color: white !important;}
+    .jqx-listitem-state-selected {background-color: #b0e1fa !important;}
+    .jqx-listitem-state-hover {background-color: #d7ecf3 !important;}
+    .jqx-dropdownlist-state-normal {background-color: f8f8f8 !important;}
+  </style>
+</head>
+<apex:outputText value=" {!(exportDataString)}" escape="false"> </apex:outputText> 
+
+
+</apex:page>

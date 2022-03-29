@@ -1,0 +1,35 @@
+<apex:page standardController="Organization__c">
+<script>
+function pop()
+    {    
+    var msgwindow=null;   
+    //var url="/apex/new1?val=";
+    var url="/apex/Employee";
+    //var url="/apex/Employee?TestValue=123";
+    //var value = document.getElementById('{!$Component.opage.oform.oval}').value;
+    alert(url);
+    //msgWindow = open(url+value,window,'resizable=no,width=200,height=400');   
+    msgWindow = open(url,window,'resizable=no,width=400,height=400');   
+    return false;
+    }
+</script>
+    <apex:tabPanel switchType="client" selectedTab="General"
+        id="theTabPanel" tabClass="activeTab" inactiveTabClass="inactiveTab">
+        <apex:tab label="Departments" name="Departments" id="tabSetup"
+            style="background-color:#FFFFFF;">
+
+            <apex:relatedList list="Departments__r" />
+            </apex:tab>
+            <apex:tab label="Employees" name="Employees"
+            id="tabExternalSystems" style="background-color:#FFFFFF;">
+            <apex:relatedList list="Employees__r" />
+            </apex:tab>
+            <!--<apex:relatedList list="SYORGN_syendp__r" />
+            <apex:relatedList list="SYORGN_sydsvc__r" />
+            <apex:relatedList list="SYORGN_sydscn__r" />-->
+            
+
+        
+        
+        </apex:tabPanel>
+</apex:page>

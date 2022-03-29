@@ -1,0 +1,679 @@
+<apex:page standardController="Quote" renderAs="PDF">
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:v = "urn:schemas-microsoft-com:vml" xmlns:o = "urn:schemas-microsoft-com:office:office" xmlns:x = "urn:schemas-microsoft-com:office:excel"><HEAD>
+<META content="text/html; charset=windows-1252" http-equiv="Content-Type"/>
+<META name="ProgId" content="Excel.Sheet"/>
+<META name="Generator" content="Microsoft Excel 15"/><LINK id="Main-File" rel="Main-File" href="../Proforma.htm"/><LINK rel="File-List" href="filelist.xml"/>
+<STYLE>v\:* {
+    BEHAVIOR: url(#default#VML)
+}
+o\:* {
+    BEHAVIOR: url(#default#VML)
+}
+x\:* {
+    BEHAVIOR: url(#default#VML)
+}
+.shape {
+    BEHAVIOR: url(#default#VML)
+}
+</STYLE>
+<LINK rel="Stylesheet" href="stylesheet.css"/>
+<STYLE>@page  {margin: 1.0in .75in 1.0in .75in; mso-header-margin: .5in; mso-footer-margin: .5in; }
+TABLE {
+    mso-displayed-decimal-separator: "."; mso-displayed-thousand-separator: ","
+}
+</STYLE>
+
+<SCRIPT language="JavaScript">
+<!--
+function fnUpdateTabs()
+{
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(0);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+}
+}
+
+if (window.name!="frSheet")
+window.location.replace("../Proforma.htm");
+else
+fnUpdateTabs();
+//-->
+</SCRIPT>
+
+<STYLE id="dynCom" type="text/css">.msocomspan1 {
+    POSITION: absolute
+}
+.msocomspan2 {
+    POSITION: absolute
+}
+.msocomspan2 {
+    LEFT: -1.5ex
+}
+.msocomspan2 {
+    WIDTH: 2ex
+}
+.msocomspan2 {
+    HEIGHT: 0.5em
+}
+.msocomanch {
+    FONT-SIZE: 0.5em
+}
+.msocomanch {
+    COLOR: red
+}
+.msocomhide {
+    DISPLAY: none
+}
+.msocomtxt {
+    VISIBILITY: hidden
+}
+.msocomtxt {
+    POSITION: absolute
+}
+.msocomtxt {
+    TOP: -10000px
+}
+.msocomtxt {
+    LEFT: -10000px
+}
+.msocomtxt {
+    WIDTH: 33%
+}
+.msocomtxt {
+    BACKGROUND: infobackground
+}
+.msocomtxt {
+    COLOR: infotext
+}
+.msocomtxt {
+    BORDER-TOP: threedlightshadow 1pt solid
+}
+.msocomtxt {
+    BORDER-RIGHT: threedshadow 2pt solid
+}
+.msocomtxt {
+    BORDER-BOTTOM: threedshadow 2pt solid
+}
+.msocomtxt {
+    BORDER-LEFT: threedlightshadow 1pt solid
+}
+.msocomtxt {
+    PADDING-BOTTOM: 3pt; PADDING-TOP: 3pt; PADDING-LEFT: 3pt; PADDING-RIGHT: 3pt
+}
+.msocomtxt {
+    Z-INDEX: 100
+}
+</STYLE>
+
+<SCRIPT language="JavaScript"><!--
+
+function msoCommentShow(com_id,anchor_id) {
+    if(msoBrowserCheck()) {
+       c = document.all(com_id);
+       a = document.all(anchor_id);
+       if (null != c) {
+        var cw = c.offsetWidth;
+        var ch = c.offsetHeight;
+        var aw = a.offsetWidth;
+        var ah = a.offsetHeight;
+        var x = a.offsetLeft;
+        var y = a.offsetTop;
+        var el = a;
+        while (el.tagName != "BODY") {
+           el = el.offsetParent;
+           x = x + el.offsetLeft;
+           y = y + el.offsetTop;
+           }        
+        var bw = document.body.clientWidth;
+        var bh = document.body.clientHeight;
+        var bsl = document.body.scrollLeft;
+        var bst = document.body.scrollTop;
+        if (x + cw + ah/2 > bw + bsl && x + aw - ah/2 - cw >= bsl ) {
+           c.style.left = x + aw - ah / 2 - cw; 
+        }
+        else {
+           c.style.left = x + ah/2; 
+        }
+        if (y + ch + ah/2 > bh + bst && y + ah/2 - ch >= bst ) {
+           c.style.top = y + ah/2 - ch;
+        } 
+        else {
+           c.style.top = y + ah/2;
+        }
+        c.style.visibility = "visible";
+       }
+    }
+}
+
+function msoCommentHide(com_id) {
+    if(msoBrowserCheck()) {
+      c = document.all(com_id)
+      if (null != c) {
+        c.style.visibility = "hidden";
+        c.style.left = "-10000";
+        c.style.top = "-10000";
+      }
+    }
+}
+
+function msoBrowserCheck() {
+ms=navigator.appVersion.indexOf("MSIE");
+vers = navigator.appVersion.substring(ms+5, ms+6);
+ie4 = (ms>0) && (parseInt(vers) >=4);
+return ie4
+}
+
+if (msoBrowserCheck()) {
+document.styleSheets.dynCom.addRule(".msocomspan1","position:absolute");
+document.styleSheets.dynCom.addRule(".msocomspan2","position:absolute");
+document.styleSheets.dynCom.addRule(".msocomspan2","left:-1.5ex");
+document.styleSheets.dynCom.addRule(".msocomspan2","width:2ex");
+document.styleSheets.dynCom.addRule(".msocomspan2","height:0.5em");
+document.styleSheets.dynCom.addRule(".msocomanch","font-size:0.5em");
+document.styleSheets.dynCom.addRule(".msocomanch","color:red");
+document.styleSheets.dynCom.addRule(".msocomhide","display: none");
+document.styleSheets.dynCom.addRule(".msocomtxt","visibility: hidden");
+document.styleSheets.dynCom.addRule(".msocomtxt","position: absolute");        
+document.styleSheets.dynCom.addRule(".msocomtxt","top:-10000");         
+document.styleSheets.dynCom.addRule(".msocomtxt","left:-10000");         
+document.styleSheets.dynCom.addRule(".msocomtxt","width: 33%");                 
+document.styleSheets.dynCom.addRule(".msocomtxt","background: infobackground");
+document.styleSheets.dynCom.addRule(".msocomtxt","color: infotext");
+document.styleSheets.dynCom.addRule(".msocomtxt","border-top: 1pt solid threedlightshadow");
+document.styleSheets.dynCom.addRule(".msocomtxt","border-right: 2pt solid threedshadow");
+document.styleSheets.dynCom.addRule(".msocomtxt","border-bottom: 2pt solid threedshadow");
+document.styleSheets.dynCom.addRule(".msocomtxt","border-left: 1pt solid threedlightshadow");
+document.styleSheets.dynCom.addRule(".msocomtxt","padding: 3pt 3pt 3pt 3pt");
+document.styleSheets.dynCom.addRule(".msocomtxt","z-index: 100");
+}
+
+// -->
+</SCRIPT>
+</HEAD>
+<BODY vLink="purple" link="blue">
+<TABLE style="WIDTH: 706pt; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed" cellSpacing="0" cellPadding="0" width="937" border="0">
+<COLGROUP>
+<COL style="WIDTH: 48pt" span="2" width="64"/>
+<COL style="WIDTH: 76pt; mso-width-source: userset; mso-width-alt: 3693" width="101"/>
+<COL style="WIDTH: 34pt; mso-width-source: userset; mso-width-alt: 1645" width="45"/>
+<COL style="WIDTH: 56pt; mso-width-source: userset; mso-width-alt: 2706" span="2" width="74"/>
+<COL style="WIDTH: 61pt; mso-width-source: userset; mso-width-alt: 2962" width="81"/>
+<COL style="WIDTH: 77pt; mso-width-source: userset; mso-width-alt: 3730" span="3" width="102"/>
+<COL style="WIDTH: 48pt" span="2" width="64"/></COLGROUP>
+<TBODY>
+<TR style="HEIGHT: 26.25pt" height="35">
+<TD style="HEIGHT: 26.25pt; WIDTH: 48pt" height="35" width="64">c</TD>
+<TD class="xl97" style="WIDTH: 270pt; mso-ignore: colspan" width="358" colSpan="5">PRO-FORMA INVOICE<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD class="xl97" style="WIDTH: 61pt" width="81">&nbsp;</TD>
+<TD class="xl97" style="WIDTH: 77pt" width="102">&nbsp;</TD>
+<TD style="WIDTH: 77pt" width="102"></TD>
+<TD style="WIDTH: 77pt" width="102"></TD>
+<TD style="WIDTH: 48pt" width="64"></TD>
+<TD style="WIDTH: 48pt" width="64"></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl65"></TD>
+<TD class="xl66"></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl65"></TD>
+<TD class="xl66"></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl65"></TD>
+<TD class="xl66"></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl70" style="mso-ignore: colspan" colSpan="2">REQUEST FOR PAYMENT<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl73">Your ref :</TD>
+<TD class="xl121" style="BORDER-RIGHT: black 0.5pt solid" colSpan="2">[Opportunity Ref]<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_1','_anchor_1')" onmouseout="msoCommentHide('_com_1')" id="_anchor_1" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_1" name="_msoanchor_1">[1]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl70" style="mso-ignore: colspan" colSpan="4">This is not a VAT invoice, as soon as<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl73" style="BORDER-TOP: medium none">PO :</TD>
+<TD class="xl121" style="BORDER-RIGHT: black 0.5pt solid" colSpan="2">new field<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_2','_anchor_2')" onmouseout="msoCommentHide('_com_2')" id="_anchor_2" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_2" name="_msoanchor_2">[2]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl70" style="mso-ignore: colspan" colSpan="4">payment has been received a VAT invoice</TD>
+<TD class="xl70"></TD>
+<TD class="xl70"></TD>
+<TD class="xl73" style="BORDER-TOP: medium none">Date Raised :</TD>
+<TD class="xl74" style="BORDER-TOP: medium none">[today's date]<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_3','_anchor_3')" onmouseout="msoCommentHide('_com_3')" id="_anchor_3" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_3" name="_msoanchor_3">[3]</A></SPAN></SPAN></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl70" style="mso-ignore: colspan" colSpan="2">will be issued.</TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl70"></TD>
+<TD class="xl70"></TD>
+<TD class="xl73" style="BORDER-TOP: medium none">Due Date :</TD>
+<TD class="xl75" style="BORDER-TOP: medium none">Date Raised +21<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_4','_anchor_4')" onmouseout="msoCommentHide('_com_4')" id="_anchor_4" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_4" name="_msoanchor_4">[4]</A></SPAN></SPAN></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl76"></TD>
+<TD class="xl71"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl70"></TD>
+<TD class="xl70"></TD>
+<TD class="xl70"></TD>
+<TD class="xl70"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl115" style="BORDER-RIGHT: black 0.5pt solid" colSpan="4">Correspondence Address:-</TD>
+<TD class="xl72"></TD>
+<TD class="xl115" style="BORDER-RIGHT: black 0.5pt solid" colSpan="4">Site Address:-</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl98" style="BORDER-RIGHT: black 0.5pt solid; WIDTH: 214pt; BORDER-BOTTOM: black 0.5pt solid" rowSpan="10" width="284" colSpan="4">[Billing Address]<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_5','_anchor_5')" onmouseout="msoCommentHide('_com_5')" id="_anchor_5" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_5" name="_msoanchor_5">[5]</A></SPAN></SPAN></TD>
+<TD class="xl72"></TD>
+<TD class="xl98" style="BORDER-RIGHT: black 0.5pt solid; WIDTH: 292pt; BORDER-BOTTOM: black 0.5pt solid" rowSpan="10" width="387" colSpan="4">[Site Address] + [Site Postcode]<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_6','_anchor_6')" onmouseout="msoCommentHide('_com_6')" id="_anchor_6" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_6" name="_msoanchor_6">[6]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl115" style="BORDER-RIGHT: black 0.5pt solid" colSpan="9">Description of works:-<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl118" style="BORDER-RIGHT: black 0.5pt solid; WIDTH: 562pt; BORDER-BOTTOM: black 0.5pt solid" rowSpan="11" width="745" colSpan="9">pricing lines as per quote pack items<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_7','_anchor_7')" onmouseout="msoCommentHide('_com_7')" id="_anchor_7" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_7" name="_msoanchor_7">[7]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl77">&nbsp;</TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl79">&nbsp;</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl77">&nbsp;</TD>
+<TD class="xl80">***VAT at</TD>
+<TD class="xl81"><SPAN style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>20 <SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_8','_anchor_8')" onmouseout="msoCommentHide('_com_8')" id="_anchor_8" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_8" name="_msoanchor_8">[8]</A></SPAN></SPAN></TD>
+<TD class="xl78">%*****</TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl79">&nbsp;</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl77">&nbsp;</TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl78"></TD>
+<TD class="xl79">&nbsp;</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl82">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl83">&nbsp;</TD>
+<TD class="xl84">&nbsp;</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl85" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl86" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD class="xl87" style="BORDER-TOP: medium none">&nbsp;</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 18.75pt" height="25">
+<TD style="HEIGHT: 18.75pt" height="25"></TD>
+<TD class="xl110" style="BORDER-RIGHT: black 0.5pt solid; BORDER-BOTTOM: black 0.5pt solid" colSpan="9">Payment Options<SPAN style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl104" style="BORDER-RIGHT: black 0.5pt solid" colSpan="4">By Bacs<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD class="xl114" style="BORDER-RIGHT: black 0.5pt solid" colSpan="3">By Cheque<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD class="xl104" style="BORDER-RIGHT: black 0.5pt solid; BORDER-LEFT: medium none" colSpan="2">By Card<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl108" style="BORDER-RIGHT: black 0.5pt solid" colSpan="4">Barclays Bank (Slough Business Park)</TD>
+<TD class="xl123" style="BORDER-RIGHT: black 0.5pt solid; WIDTH: 194pt" rowSpan="2" width="257" colSpan="3">We no longer offer cheque payment option</TD>
+<TD class="xl106" style="BORDER-RIGHT: black 0.5pt solid; BORDER-LEFT: medium none" colSpan="2">Call [DeptTelNo] during office</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl108" style="BORDER-RIGHT: black 0.5pt solid" colSpan="4">Sort Code 20 78 66</TD>
+<TD class="xl108" style="BORDER-RIGHT: black 0.5pt solid; BORDER-LEFT: medium none" colSpan="2">hours we accept all<SPAN style="mso-spacerun: yes">&nbsp;&nbsp;</SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl108" style="BORDER-RIGHT: black 0.5pt solid" colSpan="4">Account 20535419</TD>
+<TD class="xl123" style="BORDER-RIGHT: black 0.5pt solid; WIDTH: 194pt; BORDER-BOTTOM: black 0.5pt solid" rowSpan="2" width="257" colSpan="3">Please use BACS or contact us to discuss</TD>
+<TD class="xl108" style="BORDER-RIGHT: black 0.5pt solid; BORDER-LEFT: medium none" colSpan="2">major credit cards except<SPAN style="mso-spacerun: yes">&nbsp;</SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl89">&nbsp;</TD>
+<TD class="xl90">&nbsp;</TD>
+<TD class="xl90">&nbsp;</TD>
+<TD class="xl91">&nbsp;</TD>
+<TD class="xl130" style="BORDER-RIGHT: black 0.5pt solid; BORDER-LEFT: medium none" colSpan="2">American Express</TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD class="xl92" style="HEIGHT: 12.75pt; mso-ignore: colspan" height="17" colSpan="9">Please use your reference number (top right hand of this letter) when making BACS and other payments</TD>
+<TD class="xl88"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD class="xl93"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 15.75pt" height="21">
+<TD style="HEIGHT: 15.75pt" height="21"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl132" colSpan="2">Total Net:</TD>
+<TD class="xl94"><SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_9','_anchor_9')" onmouseout="msoCommentHide('_com_9')" id="_anchor_9" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_9" name="_msoanchor_9">[9]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD class="xl67"></TD></TR>
+<TR style="HEIGHT: 18.75pt; mso-height-source: userset" height="25">
+<TD style="HEIGHT: 18.75pt" height="25"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl132" colSpan="2">Total VAT:</TD>
+<TD class="xl95">£0.00<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_10','_anchor_10')" onmouseout="msoCommentHide('_com_10')" id="_anchor_10" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_10" name="_msoanchor_10">[10]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 16.5pt; mso-height-source: userset" height="22">
+<TD style="HEIGHT: 16.5pt" height="22"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl129" colSpan="2">TOTAL:</TD>
+<TD class="xl96">£0.00<SPAN class="msocomspan1"><SPAN onmouseover="msoCommentShow('_com_11','_anchor_11')" onmouseout="msoCommentHide('_com_11')" id="_anchor_11" class="msocomspan2" language="JavaScript"><A class="msocomanch" href="#_msocom_11" name="_msoanchor_11">[11]</A></SPAN></SPAN></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 13.5pt" height="18">
+<TD style="HEIGHT: 13.5pt" height="18"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD class="xl72"></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD style="HEIGHT: 12.75pt" height="17"></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD></TR>
+<TR style="HEIGHT: 12.75pt" height="17">
+<TD class="xl68" style="HEIGHT: 12.75pt; mso-ignore: colspan" height="17" colSpan="2">CnM/ProInv/005</TD>
+<TD class="xl69"></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD></TR></TBODY></TABLE>
+<DIV style="mso-element: comment-list">
+<HR class="msocomhide" align="left" SIZE="1" width="33%"/>
+
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_1','_anchor_1')" onmouseout="msoCommentHide('_com_1')" id="_com_1" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_1" name="_msocom_1">[1]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font15">Johnson, Damon:</FONT><FONT class="font14"><BR/>This is the Opportunity reference</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_2','_anchor_2')" onmouseout="msoCommentHide('_com_2')" id="_com_2" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_2" name="_msocom_2">[2]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font15">Johnson, Damon:</FONT><FONT class="font14"><BR/>This is a new field requirement. TO capture the customers own reference on our system</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_3','_anchor_3')" onmouseout="msoCommentHide('_com_3')" id="_com_3" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_3" name="_msocom_3">[3]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">AGCU3729:</FONT><FONT class="font9"><BR/></FONT><FONT class="font11">Default to today's date </FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_4','_anchor_4')" onmouseout="msoCommentHide('_com_4')" id="_com_4" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_4" name="_msocom_4">[4]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">John H:</FONT><FONT class="font9"><BR/>Quottion expiry date from Darwin</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_5','_anchor_5')" onmouseout="msoCommentHide('_com_5')" id="_com_5" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_5" name="_msocom_5">[5]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">AGCU3729:</FONT><FONT class="font9"><BR/></FONT><FONT class="font11">Billing Address</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_6','_anchor_6')" onmouseout="msoCommentHide('_com_6')" id="_com_6" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_6" name="_msocom_6">[6]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">AGCU3729:</FONT><FONT class="font9"><BR/></FONT><FONT class="font11">Site Address</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_7','_anchor_7')" onmouseout="msoCommentHide('_com_7')" id="_com_7" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_7" name="_msocom_7">[7]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">Damon Johnson:</FONT><FONT class="font9"><BR/></FONT><FONT class="font11">Same logic as quote pack.</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_8','_anchor_8')" onmouseout="msoCommentHide('_com_8')" id="_com_8" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_8" name="_msocom_8">[8]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font15">Johnson, Damon:</FONT><FONT class="font14"><BR/></FONT><FONT class="font11">This can be taken from the quote page</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_9','_anchor_9')" onmouseout="msoCommentHide('_com_9')" id="_com_9" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_9" name="_msocom_9">[9]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">AGCU3729:</FONT><FONT class="font9"><BR/></FONT><FONT class="font11">Go to your quote screen in Darwin and scroll to 'Quote cost' this box should show 'total job cost (ex vat)'</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_10','_anchor_10')" onmouseout="msoCommentHide('_com_10')" id="_com_10" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_10" name="_msocom_10">[10]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font12">AGCU3729:</FONT><FONT class="font11"><BR/>Go to your quote screen in Darwin and scroll to 'Quote cost' this box should show 'VAT'</FONT></DIV></DIV></DIV></DIV>
+<DIV style="mso-element: comment">
+<DIV onmouseover="msoCommentShow('_com_11','_anchor_11')" onmouseout="msoCommentHide('_com_11')" id="_com_11" class="msocomtxt" language="JavaScript">
+<DIV><A class="msocomhide" href="#_msoanchor_11" name="_msocom_11">[11]</A> 
+<DIV class="shape" style="PADDING-BOTTOM: 0pt; TEXT-ALIGN: left; PADDING-TOP: 0.75pt; PADDING-LEFT: 0.75pt; PADDING-RIGHT: 0pt"><FONT class="font10">AGCU3729:</FONT><FONT class="font9"><BR/></FONT><FONT class="font11">Go to your quote screen in Darwin and scroll to 'Quote cost' this box should show 'Total job cost (inc vat)'</FONT></DIV></DIV></DIV></DIV></DIV>
+</BODY>
+</HTML>
+</apex:page>

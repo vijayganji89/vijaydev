@@ -1,0 +1,17 @@
+<apex:page standardController="Department__c" extensions="DepartmentExtension">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: DepartmentPage
+  <!-- End Default Content REMOVE THIS -->
+  <apex:form >
+      <!--<apex:pageMessages id="msg"></apex:pageMessages>-->
+      "{!hasErrorMessages }"
+      <apex:pageblock >
+          <apex:pageblockSection >
+              <apex:inputField value="{!Department__c.Department_ID__c}"/>
+              <apex:inputField value="{!Department__c.Organization_ID__c}"/>
+              <apex:commandbutton value="Save" action="{!saveDepartment}"/>
+          </apex:pageblockSection>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

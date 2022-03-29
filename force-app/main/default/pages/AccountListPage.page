@@ -1,0 +1,17 @@
+<apex:page standardController="Account" recordSetVar="Accounts">
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageblockTable value="{!Accounts}" var="a">
+                <apex:column title="Name" value="{!a.Name}"/>
+                <apex:column value="{!a.AccountNumber}"/>
+            </apex:pageblockTable>
+            <!--html-data-id
+            <apex:dataTable value="{!Accounts}" var="lineItem">
+                <apex:column headerValue="{!$ObjectType.Account.fields.Name.label}" >
+                    <apex:inputText html-data-id="{!lineItem.Name}" style="text-align:right;" value="{!lineItem.Name}" />
+                    <apex:inputText value="{!lineItem.Name}" style="text-align:right;" />
+                </apex:column>
+            </apex:dataTable>-->
+        </apex:pageblock>
+    </apex:form>  
+</apex:page>

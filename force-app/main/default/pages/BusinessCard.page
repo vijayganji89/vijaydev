@@ -1,0 +1,53 @@
+<apex:page >
+    <style>
+        .mypage {
+            font-family: "ProximaNovaSoft-Regular", Calibri; 
+            font-size: 110%;
+            padding-top: 12px;
+            width: 100%;
+        }
+        .mypage input[type=text] {
+            width: 100%;
+            height: 35px;
+            -webkit-appearance: none;
+            padding: 0 8px;
+            margin: 4px 0;
+            line-height: 21px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            outline: none;
+        }
+        .mypage button {
+            -webkit-appearance: button;
+            border-radius: 3px;
+            display: block;
+            padding: 12px;
+            margin: 4px 0;
+            width: 100%;
+            background: #eee;
+            border: solid 1px #ccc;
+        }
+    </style>
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageblockSection columns="4" title="User Information">
+                <apex:outputLabel value="First Name"></apex:outputLabel>
+                <apex:outputLabel >{!$User.FirstName}</apex:outputLabel>
+                
+                <apex:outputLabel value="Last Name"></apex:outputLabel>
+                <apex:outputLabel >{!$User.LastName}</apex:outputLabel>
+                
+                <apex:outputLabel value="Phone"></apex:outputLabel>
+                <apex:outputLabel >{!$User.Phone}</apex:outputLabel>
+                
+                <apex:outputLabel value="Title"></apex:outputLabel>
+                <apex:outputLabel >{!$User.Title}</apex:outputLabel>
+                
+                <apex:outputLabel value="Email"></apex:outputLabel>
+                <apex:outputLabel >{!$User.Email}</apex:outputLabel>
+                
+            </apex:pageblockSection> 
+        </apex:pageblock>
+    </apex:form>      
+</apex:page>

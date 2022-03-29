@@ -1,0 +1,19 @@
+<apex:page showHeader="false" standardController="Account" sidebar="false" recordSetVar="Account" extensions="SE_MyController">
+    <apex:form >
+        <html>
+            <body>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4 control-label">
+                            <Label style="padding-bottom:2px;color:#333; float: right;"> Darksite: </Label>
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-8 control-label required">
+                            <apex:inputCheckbox value="{!sysDarkSite}"/>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            <apex:commandButton value="Update" action="{!updateRecord}"/>
+        </html>
+    </apex:form>
+</apex:page>

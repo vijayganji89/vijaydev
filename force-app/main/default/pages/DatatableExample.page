@@ -1,0 +1,116 @@
+<apex:page >
+  <HTML> <BODY> 
+   <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/scripts/jquery-1.7.2.min.js')}" ></script> 
+   <!--<script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/scripts/jquery-1.7.2.min.js')}" ></script>-->
+      <script type="text/javascript" src="http://www.datatables.net/media/javascript/complete.min.js" ></script> 
+      <script type="text/javascript" src="http://www.datatables.net/release-datatables/media/js/jquery.dataTables.min.js" ></script>  
+
+
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+<link rel="stylesheet" type="text/css" href="/media/css/TableTools.css"/> 
+<link rel="stylesheet" type="text/css" href="/media/css/header.css"/> 
+<link rel="stylesheet" type="text/css" href="/media/css/TableTools_JUI.css"/> 
+<link rel="stylesheet" type="text/css" href="/media/css/demo_page.css"/> 
+<link rel="stylesheet" type="text/css" href="/media/css/demo_table.css"/> 
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"> </script>
+<script src="/media/js/ZeroClipboard.js"></script>
+<script src="/media/js/TableTools.min.js"></script>
+
+
+<script >
+$(document).ready( function () {
+$('#records').dataTable( {
+"sDom": 'T<"clear">lfrtip',
+"bJQueryUI": true,
+"bPaginate": false,
+"oTableTools": {
+"sSwfPath": "/media/swf/copy_csv_xls.swf"
+}
+} );
+
+});
+</script>
+</head>
+
+<button id="clickExcel">Export as Excel</button>
+<br></br>
+
+
+<DIV id="container" >
+<TABLE id="records" border="1" bordercolor="#CDC8C8" style="border-collapse:collapse width=75% cellpadding=1 cellspacing=2">
+<H3> <FONT color="#1C6594"></FONT>  Options Expiration Report as of 20130405 </H3>
+
+<THEAD>
+<TR STYLE='background:#1C6594;color:#FFFFFF'>
+<TH>TYPE</TH>
+<TH>SECURITY</TH>
+<TH>EXPIRY</TH>
+<TH>QUANTITY</TH>
+<TH>GROUP</TH>
+<TH>UNDERLYING</TH>
+<TH>STRIKE</TH>
+<TH>LAST SPOT</TH>
+<TH>C/P</TH>
+<TH>STYLE</TH>
+<TH>STRIKE %</TH>
+<TH>IN/OUT</TH>
+<TH>FIRST OBSERVATION DATE</TH>
+</TR> 
+</THEAD> 
+<TBODY>
+<TR>
+<TD>AVPO</TD>
+<TD>20486.HK</TD>
+<TD>20130418</TD>
+<TD>108000000.0</TD>
+<TD>D_AI-HK-W-SSO_DW-3988</TD>
+<TD>3988.HK</TD>
+<TD>3.0</TD>
+<TD>3.51</TD>
+<TD>Call</TD>
+<TD>Euro</TD>
+<TD>17.00</TD>
+<TD>IN</TD>
+<TD>20130411</TD>
+</TR>
+
+<TR>
+<TD>AVPO</TD>
+<TD>20810.HK</TD>
+<TD>20130425</TD>
+<TD>-128000000.0</TD>
+<TD>D_AI-HK-W-SSO_DW-0005</TD>
+<TD>0005.HK</TD>
+<TD>83.88</TD>
+<TD>80.9</TD>
+<TD>Call</TD>
+<TD>Euro</TD>
+<TD>-3.55</TD>
+<TD>OUT</TD>
+<TD>20130418</TD>
+</TR>
+<TR>
+<TD>AVPO</TD>
+<TD>20810.HK-DCM-OTC-CALL</TD>
+<TD>20130425</TD>
+<TD>316000.0</TD>
+<TD>D_AI-HK-W-SSO_DW-W-0005</TD>
+<TD>0005.HK</TD>
+<TD>83.88</TD>
+<TD>80.9</TD>
+<TD>Call</TD>
+<TD>Euro</TD>
+<TD>-3.55</TD>
+<TD>OUT</TD>
+<TD>20130418</TD>
+</TR>
+</TBODY>
+</TABLE>
+</DIV>
+</BODY></HTML>
+</apex:page>

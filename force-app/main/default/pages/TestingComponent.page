@@ -1,0 +1,76 @@
+<apex:page controller="MyController">
+
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+
+
+  <link rel="stylesheet" href="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/styles/jqx.base.css')}" type="text/css" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/scripts/jquery-1.7.2.min.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/scripts/gettheme.js')}" ></script>    
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxcore.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxmenu.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxdata.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxbuttons.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxtabs.js')}" ></script>    
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxscrollbar.js')}" ></script>      
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.edit.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.sort.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.filter.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.selection.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.columnsresize.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.filter.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.sort.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxgrid.pager.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxpanel.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxlistbox.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxdropdownlist.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxinput.js')}" ></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/Jqwidgets/jqwidgets/jqxexpander.js')}" ></script>   
+
+ 
+<script type="text/javascript">
+  $(document).ready(function () 
+        {
+             alert('1');
+             $('#divDirectReport').jqxTabs({ rtl : true, width: '800px', position: 'top',scrollPosition:'both',keyboardNavigation: false});          
+             alert('2');Addtab();
+        });
+    
+    function Addtab()
+    {
+         $('#divDirectReport').jqxTabs('addAt', 1, 'First',   '<h1>Testing Tab</h1>');
+         $('#divDirectReport').jqxTabs('addAt', 2, 'Second', '<apex:pageblock title="Test"></apex:pageblock>');
+         $('#divDirectReport').jqxTabs('addAt', 3, 'Third', '<apex:dynamicComponent componentValue="{!dynamicForm}"/>');
+         
+        <!--$('#divDirectReport').jqxTabs('addAt', 3, 'Third', '<apex:dynamicComponent id="try" componentValue="{!Component}" />');-->
+         
+    }    
+</script>
+
+<script>
+//Call the init controller method when the page has loaded.
+function test(){
+  alert('asdasd');
+  init();     
+   alert('asda');  }
+</script>
+
+ <!--$('#divDirectReport').jqxTabs('addAt', 3, 'tab',   '<c:FirstComponent id="Test5"></c:FirstComponent>');-->
+ <!--$('#divDirectReport').jqxTabs('addAt', 3, 'Third', '<apex:dynamicComponent id="tryc" componentValue="{!HeaderWithDueDateCheck}" />');-->
+ <c:FirstComponent id="Test1" ></c:FirstComponent>
+  <c:FirstComponent id="Test2" ></c:FirstComponent>
+  <apex:dynamicComponent id="try" componentValue="{!Component}" />
+  <apex:form >
+ <div id="divDirectReport">
+                <ul style="margin-left: 30px;" id="unorderedList">                
+                    <li>Direct Reports</li>
+                  </ul>    
+                    <div id="divDirectReportjqwid"></div>
+           
+ </div>
+<apex:commandButton oncomplete="test();" />
+<apex:actionFunction name="ueie" action="init"/>
+    </apex:form>
+    <apex:dynamicComponent rendered="false" componentValue="{!dynamicForm}"/>'
+</apex:page>

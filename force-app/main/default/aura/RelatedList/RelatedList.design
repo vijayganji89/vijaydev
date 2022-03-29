@@ -1,0 +1,8 @@
+<design:component  label="List Object Records">
+    <design:attribute name="heading"  label="Heading" description="" />
+    <design:attribute name="subheading"  label="Sub Heading" description="" />
+    <design:attribute name="qid"  label="Quote Id" description="" />
+    <design:attribute name="create" label="Show Create Button"/>
+    <design:attribute name="edit" label="Show Edit Button"/>
+    <design:attribute name="delete" label="Show Delete Button"/>
+</design:component>

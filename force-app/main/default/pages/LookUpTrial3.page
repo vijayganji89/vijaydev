@@ -1,0 +1,15 @@
+<apex:page controller="MyCustomLookupController" id="Page" tabstyle="Contact">
+    <apex:sectionHeader title="Demo" subtitle="Custom Lookup" />
+    
+    <apex:form id="myForm">
+        <c:CustomLookup formId="{!$Component.myForm}" textboxId="Account"></c:CustomLookup>
+        <apex:PageBlock id="PageBlock">
+            <apex:pageBlockSection columns="1" title="Custom Lookup">
+                <apex:inputField id="Account" value="{!contact.AccountId}"/>
+                <apex:outputField id="Account2" value="{!contact.AccountId}"/>
+            </apex:pageBlockSection>
+        </apex:PageBlock>
+        <apex:commandButton value="Check Value" reRender="Account2"/>
+    </apex:form>
+
+</apex:page>

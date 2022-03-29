@@ -1,0 +1,140 @@
+<apex:page controller="ExportToExcel" sidebar="false" title="Export">
+<style>
+        #newspaper-b {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 12px;
+            margin: 45px;
+            width: 480px;
+            text-align: left;
+            border-collapse: collapse;
+            border: 1px solid #69c;
+        }
+        #newspaper-b th  {
+            padding: 15px 10px 10px 10px;
+            font-weight: normal;
+            font-size: 14px;
+            color: #039;
+        }
+        #newspaper-b tbody {
+            background: #e8edff;
+        }
+        #newspaper-b td {
+            padding: 10px;
+            color: #669;
+            border-top: 1px dashed #fff;
+        }
+        #newspaper-b tbody tr:hover td {
+            color: #339;
+            background: #d0dafd;
+        }
+
+    </style>
+    <link rel="stylesheet" href="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/styles/jqx.base.css')}" type="text/css" />
+
+    <script type="text/javascript"
+    src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/scripts/gettheme.js')}" />
+    <!-- <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/scripts/jquery-1.8.2.min.js')}" /> -->
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/scripts/jquery-1.8.2.min.js')}" />
+     <!-- <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot5dot5, '/scripts/jquery-1.7.2.min.js')}" />-->
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqx-all.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxpanel.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxcore.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxbuttons.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxscrollbar.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxmenu.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.selection.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.columnsresize.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxdata.js')}" />
+    <!--<script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/gettheme.js')}" /> -->
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxmenu.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.edit.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxlistbox.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxdropdownlist.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxdropdownbutton.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxtree.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxcheckbox.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxcalendar.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxnumberinput.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxdatetimeinput.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/globalization/jquery.global.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.filter.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.sort.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.pager.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxtabs.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxwindow.js')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.grouping.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxgrid.columnsreorder.js')}" />
+    <!--<script type="text/javascript" src="{!URLFOR($Resource.ReportTemplate, '/jquery.tablePagination.js')}" />
+     Jqx Calender -->
+    <!--  <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot5dot5, '/scripts/jquery-1.8.0.min.js')}"></script> -->
+    <script type="text/javascript" src="{!URLFOR($Resource.jqwidgets_ver_2dot6dot0, '/jqwidgets/jqxtooltip.js')}"></script>
+ <apex:sectionHeader title="Export Table" />
+
+     <script type='text/javascript' language='javascript'>
+        var j$ = jQuery.noConflict();
+        function exportTableData(){
+           // j$(".exampleDataToExport").val(j$("#containerTable").html());
+            //j$(".exampleDataToExport").val(j$("#containerTable").html());
+            //j$(".exampleDataToExport11").val('test');
+            
+            //alert("{!exportDataString }")
+            goToExportPage();
+            //goToExportPage('1');
+            //alert("{!testdata}")
+        }
+     </script>
+    <apex:form >
+        <a style="text-decoration: underline;cursor: pointer;margin-left:480px;font-weight:bold;font-size: 15px;" class="dummyCustomExport"  onclick="exportTableData()" title="export"><b>Export</b></a>
+        <div id="containerTable">
+            <table id="newspaper-b" class="dummyExportTableClass" summary="2007 Major IT Companies' Profit">
+                <thead>
+                    <tr>
+                      <th scope="col">Company</th>
+                      <th scope="col">Q1</th>
+                      <th scope="col">Q2</th>
+                      <th scope="col">Q3</th>
+                      <th scope="col">Q4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>Microsoft</td>
+                      <td>20.3</td>
+                      <td>30.5</td>
+                      <td>23.5</td>
+                      <td>40.3</td>
+                  </tr>
+                  <tr>
+                      <td>Google</td>
+                      <td>50.2</td>
+                      <td>40.63</td>
+                      <td>45.23</td>
+                      <td>39.3</td>
+                  </tr>
+                  <tr>
+                      <td>Apple</td>
+                      <td>25.4</td>
+                      <td>30.2</td>
+                      <td>33.3</td>
+                      <td>36.7</td>
+                  </tr>
+                  <tr>
+                      <td>IBM</td>
+                      <td>20.4</td>
+                      <td>15.6</td>
+                      <td>22.3</td>
+                      <td>29.3</td>
+                  </tr>
+
+                </tbody>
+            </table>
+        </div>
+        //action function redirects to another page.
+        <apex:actionFunction name="goToExportPage" action="{!goToExportPage}" />
+<!--        <apex:inputTextarea id="ExportDataString" value="{!exportDataString}" styleClass="exampleDataToExport" style="display:none"/>-->
+        <apex:inputTextarea id="ExportDataString" value="{!exportDataString}" styleClass="exampleDataToExport" />  
+        <apex:inputTextarea id="ExportDataString11" value="{!testdata}" styleClass="exampleDataToExport11" />        
+    </apex:form>
+
+</apex:page>

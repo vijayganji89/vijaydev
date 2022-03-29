@@ -1,0 +1,94 @@
+<!--<aura:component implements="forceCommunity:availableForAllPageTypes" controller="AccountListController">
+<aura:component implements="force:appHostable" controller="AccountListController">-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="AccountListController">
+    <ltng:require styles="/resource/SLDS203/assets/styles/salesforce-lightning-design-system.css" />
+    <aura:attribute access="private" name="sObjectRecords" type="SObject[]" 
+                    description="Sobject Records"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="heading" type="String"></aura:attribute>
+    <aura:attribute name="qid" type="String"></aura:attribute>
+    <aura:attribute name="subheading" type="String"></aura:attribute>
+    <aura:attribute name="create" type="Boolean" default="true"/>
+    <aura:attribute name="edit" type="Boolean" default="true"/>
+    <aura:attribute name="delete" type="Boolean" default="true"/>
+    <aura:attribute access="public" name="objectRec" type="String" default=""/>  
+    
+    <div class="slds">
+        <div class="slds-box">
+            <div class="slds-m-around--medium ">
+                <span class="dropIcon">
+                    <button  class="slds-button slds-button--icon-small slds-button--icon-border-filled slds-path__trigger slds-m-horizontal--small" onclick="{!c.opencontent}">
+                        <div aura:id="arrowup" class="slds-hide">
+                            <!--<c:svgIcon svgPath="https://hcsdev-accenturehealth.cs4.force.com/Broker/resource/SLDS203/assets/icons/utility-sprite/svg/symbols.svg#chevronup" 
+                                       size="small" class="arrow"/>   -->
+                        </div>
+                        <div aura:id="arrowdown">
+                            <!--<c:svgIcon svgPath="https://hcsdev-accenturehealth.cs4.force.com/Broker/resource/SLDS203/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" 
+                                       size="small" class="arrow"/>   -->
+                        </div>
+                    </button>
+                </span>
+                <span class="slds-text-heading--large slds-m-vertical--large">{!v.heading}</span> 
+                <div class="slds-button-group floatR" role="group">
+                    <aura:if isTrue="{!v.create}">
+                        <button class="slds-button slds-button--neutral" onclick="{!c.createRecord}">Create New</button>
+                    </aura:if>
+                    <aura:if isTrue="{!v.edit}">
+                        <button class="slds-button slds-button--neutral" onclick="{!c.doEdit}">Edit</button>
+                    </aura:if>
+                    <aura:if isTrue="{!v.delete}">
+                        <button class="slds-button slds-button--neutral" onclick="{!c.deleteRecord}">Delete</button>
+                    </aura:if>
+                </div>
+            </div>
+            <div aura:id="contentbody">
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                    <thead>
+                        <tr class="slds-text-heading--label">
+                            
+                            <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+                            <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+                            <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+                            <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+                            <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <aura:iteration items="{!v.sObjectRecords}" var="record">
+                            <tr>
+                                <td data-label="Quote Number">
+                                    
+                                    <aura:if isTrue="{!v.edit || v.delete}">
+                                        <label class="slds-checkbox">
+                                            <ui:inputCheckbox aura:id="{!record.Id}" 
+                                                              text="{!record.Id}" 
+                                                              change="{!c.selectRecord}"/>
+                                            <span class="slds-checkbox--faux"></span>
+                                            &nbsp;&nbsp;
+                                            <span class="slds-form-element__label"><a onclick="{!c.getRecord}" data-record="{!record.Id}">{!record.Name}</a></span>
+                                        </label>
+                                    </aura:if>
+                                    <aura:if isTrue="{!not(v.edit || v.delete)}">
+                                        <div class="slds-truncate">
+											<a onclick="{!c.getRecord}" data-record="{!record.Id}">{!record.Name}</a>
+                                        </div>
+                                    </aura:if>
+                                    
+                                </td>
+                                <td data-label="Account"><div class="slds-truncate">{!record.Name}</div></td>
+                                <td data-label="Opportunity"><div class="slds-truncate">{!record.Name}</div></td>
+                                <td data-label="Segment"><div class="slds-truncate">{!record.Name}</div></td>
+                                <td data-label="Status"><div class="slds-truncate">{!record.Name}</div></td>
+                                
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br/>
+    
+</aura:component>
