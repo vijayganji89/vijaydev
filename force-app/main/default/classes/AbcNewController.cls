@@ -2,7 +2,7 @@ public with sharing class AbcNewController {
 
     public AbcNewController(ApexPages.StandardController controller) {
 
-    }
+    } 
     
     private Map<String, String> createDefaultValues() {
     // Obtain the magic ids
