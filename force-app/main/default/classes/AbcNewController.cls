@@ -6,7 +6,7 @@ public with sharing class AbcNewController {
      
     private Map<String, String> createDefaultValues() {
     // Obtain the magic ids
-    //create feature 4
+    //create feature 4 - updating some code after issues found
     PageReference p = new PageReference('/' + Employee__c.SObjectType.getDescribe().getKeyPrefix() + '/e?nooverride=1');
     String html = p.getContent().toString();
     Map<String, String> labelToId = new Map<String, String>();
