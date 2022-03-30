@@ -5,6 +5,7 @@ public class AccountEmailAlert {
     integer totalRecs = 0;
     integer LimitSize= 5;
     //create feature3
+    //create feature4
     public List<wrapAccount> wrapAccountList {get; set;}
     public list <Account> acc {get;set;}
     public String searchKey {get;set;}
