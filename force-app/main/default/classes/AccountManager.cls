@@ -2,7 +2,7 @@
 global with sharing class AccountManager {
     @HttpGet
     global static Account getAccount() {
-        
+        //creating feature6 branch
         RestRequest request = RestContext.request;
         // grab the accountId from the end of the URL
         //String accountId = request.requestURI.substring(
